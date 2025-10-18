@@ -8,11 +8,11 @@ datasets>=2.0.0
 tqdm>=4.64.0
 
 # 机器学习
-scikit-learn>=1.2.0   # 安装名！
+scikit-learn>=1.2.0   
 joblib>=1.2.0
 
 # 可选功能
 openai>=0.27.0
-beautifulsoup4>=4.11.0   # 不是 bs4
+beautifulsoup4>=4.11.0   
 chardet>=5.0.0
 regex>=2022.7.9

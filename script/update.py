@@ -60,14 +60,14 @@ def move_folder_files(src_folder, dst_folder):
     print(f"搬运完成: {src_folder} -> {dst_folder}")
 
 
-# ========== 批量执行示例 ==========
+# 
 if __name__ == "__main__":
     path_1 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "csv")
     path_2 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
 
     target_folders = [path_1, path_2]
 
-    keep = ["stopwords.txt", "verbword.txt", "baihe_aid_title_cover_local.csv", "filename_realvolume.csv"]
+    keep = ["ph.md","stopwords.txt", "verbword.txt", "baihe_aid_title_cover_local.csv", "filename_realvolume.csv"]
     keep_subfolders = ["history_rank_volume", "history_rank_book","result01","result02","txt_cleaned","txt_val_cleaned1","txt_train_cleaned1","normalizerCSV"]  
 
     for folder in target_folders:

@@ -43,11 +43,11 @@
       </ul>
     </li>
     <li><a href="#usage">用法</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#roadmap">路线图</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#contact">联系方式</a></li>
+    <li><a href="#acknowledgments">致谢</a></li>
   </ol>
 </details>
 
@@ -185,30 +185,30 @@
 
 ### 安装
 
-1. 克隆仓库。
+1. **克隆仓库。**
    运行以下命令来克隆项目仓库：
 * bash
    ```sh
    git clone https://github.com/ArtistC220/BERT-LLM-Yuri-cls.git
    ```
-2. 下载一个预训练模型。
+2. **下载一个预训练模型。**
    - 轻量版的压缩包已经上传到仓库的Releases中，你可以直接在仓库下载[BERT-Yuri-CLS](https://github.com/ArtistC220/BERT-LLM-Yuri-cls/releases/tag/v1.0.0)。
    
    - 也可以通过运行`script\download_model.bat`下载。
 
    - large版已经上传至[BERT-Yuri-CLS-Large](https://huggingface.co/yeyeye0118/BERT-Yuri-CLS-Large)。
 
-3. 确保将模型放在正确的位置。
+3. **确保将模型放在正确的位置。**
    建议将含模型的文件夹放在`models/`目录下。
    将你下载的模型路径输入`config.json`的对应位置上。
    ```json
    "bert_checkpoint": "./models/checkpoint-47200", 
    ```
 
-4. 获取一个LLM的api key。
+4. **获取一个LLM的api key。**
    本项目使用了 [kimi-k2-0905-preview](https://platform.moonshot.cn/docs/pricing/chat)，这是一种中文长文本处理能力优秀且幻觉较低的 LLM。你需要注册并获取 API 密钥。
    
-5. 将你的api key输入 `config.json`的对应位置上。
+5. **将你的api key输入 `config.json`的对应位置上。**
    ``` json
    "api_key": "your-api-key",
    ```
@@ -218,14 +218,63 @@
 <!-- USAGE EXAMPLES -->
 ## 用法
 
-1. 将你要推理的百合文学作品放到`txt_test/`中，请确保文件格式为`txt`，命名格式为`书号（数字）_卷号（数字）`，如`1683_99285`。本项目文本数据的初始编号来自[轻小说文库](https://www.wenku8.net/)。如果推理文本在其中收录，可尽量使用其中编号。
+1. **准备文本文件**
 
-2. 运行`run_all.py`,如果是第一次使用，可以直接`run`，再次使用时先`update`再`run`，`update`操作将会清理上一次推理时产生的缓存文本，表格等数据，具体清理目录以及白名单请阅读`script\update.py`，如有需要，执行前请保存需要的临时数据。
+   将你要推理的百合文学作品文本放入 `txt_test/` 文件夹。请确保文件格式为 `.txt`，且命名格式遵循 `书号_卷号` 的规则。例如，文件命名为 `1683_99285.txt`。项目中使用的编号源自 [轻小说文库](https://www.wenku8.net/)，如果该文本在其中收录，尽量使用对应的编号。
 
-3. 运行程序后，在`csv\weighted`中将会生成推理文本的推理结果，在`csv\history_rank_book`，
+2. **运行推理程序**
+
+   使用 `run_all.py` 来执行推理任务。  
+   - **第一次运行**：直接运行 `run_all.py` ，执行`run`即可。
+   - **后续运行**：先执行 `update` 再执行 `run`。`update` 操作会清理上一次推理时产生的缓存数据（如表格和临时文件）。你可以在 `script\update.py` 中查看具体清理目录和白名单信息。请在执行前保存好需要的临时数据。
+
+3. **查看结果**
+
+   推理完成后，结果会保存到以下文件夹：
+   - `csv\weighted/`：生成的推理计算结果文件。
+   - `csv\history_rank_book` 和 `csv\history_rank_volume`：这两个文件会生成带有时间戳的历史计算结果，并将其与排行榜数据合并。请注意，这项功能目前还比较粗糙，可能需要进一步优化。
+
+   **重要提示：** 强烈建议单独保存 `csv\weighted/` 中的计算结果，因为该文件夹会作为缓存文件被清理。
+
+4. **使用测试文本**
+
+   在 `txt_test/` 文件夹中，已经提供了一份测试文本 `txt_test\100002_8.txt`，你可以使用它作为测试样例。
+
+<p align="right">(<a href="#readme-top">回到顶部</a>)</p>
 
 
+## 路线图
+
+- [ ] 
 
 
+## Contributing
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+欢迎对本项目进行贡献！请遵循以下步骤：
+
+1. Fork 本仓库
+2. 创建一个功能分支 (`git checkout -b feature-branch`)
+3. 提交更改 (`git commit -am 'Add new feature'`)
+4. 推送到分支 (`git push origin feature-branch`)
+5. 创建一个新的 Pull Request（PR）
+
+如果你遇到问题，或者有功能建议，可以通过 Issues 提交给我们。我们非常欢迎你的反馈和改进意见！
+
+更多贡献细节请查看 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
+<p align="right">(<a href="#readme-top">回到顶部</a>)</p>
+
+## License
+
+本项目使用 [MIT License](LICENSE) 进行授权。
+
+MIT License 是一个非常宽松的开源协议，允许任何人自由地使用、修改、分发本项目代码，但不承担任何责任。
+
+<p align="right">(<a href="#readme-top">回到顶部</a>)</p>
+
+## 致谢
+
+- **贡献者**: 感谢 [yeyeye0118](https://github.com/yeyeye0118) 完成了large版的训练、LLM部分的脚本以及模块化脚本的构建。
+- **数据集提供者**: 感谢 [轻小说文库](https://www.wenku8.net/) 提供的文本数据集，支持本项目的研究和开发。
+
+<p align="right">(<a href="#readme-top">回到顶部</a>)</p>

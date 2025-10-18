@@ -67,7 +67,7 @@ if __name__ == "__main__":
 
     target_folders = [path_1, path_2]
 
-    keep = ["ph.md","stopwords.txt", "verbword.txt", "baihe_aid_title_cover_local.csv", "filename_realvolume.csv"]
+    keep = ["ph.md","stopwords.txt", "verbword.txt", "baihe_aid_title_cover_local.csv", "filename_realvolume.csv" , "u-requirements.txt"]
     keep_subfolders = ["history_rank_volume", "history_rank_book","result01","result02","txt_cleaned","txt_val_cleaned1","txt_train_cleaned1","normalizerCSV"]  
 
     for folder in target_folders:

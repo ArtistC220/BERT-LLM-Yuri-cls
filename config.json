@@ -1,0 +1,55 @@
+
+{
+  "txt_dir": "./txt_train",
+  "txt_test_dir": "./txt_test",  
+  "label_file": "./label/labels.csv",  
+  "stopwords_file": "./assets/stopwords.txt",  
+  "verbword_file": "./assets/verbword.txt",
+  "assets_dir": "./assets",
+  "models_dir": "./models",
+  "csv_dir": "./csv",
+
+  "txt_train_cleaned_dir": "./assets/txt_train_cleaned",
+  "txt_test_cleaned_dir": "./assets/txt_test_cleaned",
+  "txt_drop_dialogue_dir": "./assets/txt_drop_dialogue",
+
+  "csv_cut_dialogue_dir": "./csv/cut_dialogue",
+  "csv_cut_verb_dir": "./csv/cut_verb",
+  "csv_prediction_dir": "./csv/prediction",  
+
+
+  
+  "api_key": " ", 
+  "LLM_threads_dialogue": 7, 
+  "LLM_threads_verb": 20,
+
+  "txt_clean":{
+    "min_count": 100
+  },
+
+  "vectorizer": {
+    "max_features": 30000,   
+    "ngram_range": [1, 2],  
+    "min_df": 2,            
+    "max_df": 0.95          
+  },
+
+  "model": {
+    "type": "logistic_regression",
+    "C": 3.0,              
+    "max_iter": 5000,      
+    "class_weight": "balanced"  
+  },
+
+  "bert_checkpoint": "./models/ckpt6/checkpoint-47200",
+  "bert_max_len": 512,
+  "bert_stride": 128,
+  "bert_batch_size": 8,
+
+  "clean_banner": "★☆★☆★☆轻小说文库(Www.WenKu8.Com)\\☆★☆★☆★",
+  "clean_keys": [
+    "台版\\s*转自", "图源", "录入", "校对", "修图", "美工", "澄空学园",
+    "轻之国度", "扫图", "台版", "转自"
+  ]
+  
+}

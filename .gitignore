@@ -1,0 +1,20 @@
+﻿
+models/
+assets/txt_cleaned/
+assets/txt_val_cleaned1/
+assets/txt_train_cleaned1/
+txt/
+txt_BERT_train1/
+txt_BERT_verify1/
+txt_train/
+__pycache__/
+
+# 逐目录单独放行 .gitkeep
+!models/.gitkeep
+!assets/txt_cleaned/.gitkeep
+!assets/txt_val_cleaned1/.gitkeep
+!assets/txt_train_cleaned1/.gitkeep
+!txt/.gitkeep
+!txt_BERT_train1/.gitkeep
+!txt_BERT_verify1/.gitkeep
+!txt_train/.gitkeep

@@ -53,7 +53,7 @@
 
 ## 关于项目
 
-本项目旨在探索模糊数学理论与传统大模型微调（如 BERT）和大语言模型（LLM）相结合，在百合文学作品分类中的应用效果。  
+本项目旨在探索模糊数学理论与传统大模型微调（BERT）和大语言模型（LLM）相结合，在百合文学作品分类中的应用效果。  
 项目的初期目标是通过模型训练构建隶属函数，针对性地给出百合文学作品在“重百合”集合中的隶属度，以此衡量百合作品的“轻重”程度。主要思路是利用BERT微调进行文本初步分类，同时结合大语言模型（LLM）进行辅助统计以参与结果计算，提供相对高效、准确的分类与理解。
 
 目前，项目已完成以下工作：
@@ -149,8 +149,8 @@
 </details>
 
 
-完整书级隶属度排序请查看 [book_weighted_with_title_sorted_large.csv](csv\result02\大模型\book_weighted_with_title_sorted_large.csv)。
-完整卷级隶属度排序请查看 [volume_weighted_with_title_sorted_large.csv](csv\result02\大模型\volume_weighted_with_title_sorted_large.csv)。
+完整书级隶属度排序请查看 [book_weighted_with_title_sorted_large.csv](.\csv\result02\大模型\book_weighted_with_title_sorted_large.csv)。
+完整卷级隶属度排序请查看 [volume_weighted_with_title_sorted_large.csv](.\csv\result02\大模型\volume_weighted_with_title_sorted_large.csv)。
 
 更多详细数据可以在`csv\result02\大模型\`以及`csv\result02\小模型\`文件夹中找到。
 
@@ -181,7 +181,7 @@
   ```
 
 请确保安装的是适合你的 CUDA 版本的 PyTorch。
-笔者使用的显卡是RTX5060移动版，构建项目时的环境在[u-requirements.txt](assets\u-requirements.txt)，仅供参考。
+笔者使用的显卡是RTX5060移动版，构建项目时的环境在[u-requirements.txt](./assets/u-requirements.txt)，仅供参考。
 
 ### 安装
 

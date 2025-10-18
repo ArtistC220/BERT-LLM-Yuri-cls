@@ -149,8 +149,8 @@
 </details>
 
 
-完整书级隶属度排序请查看 [book_weighted_with_title_sorted_large.csv](.\csv\result02\大模型\book_weighted_with_title_sorted_large.csv)。
-完整卷级隶属度排序请查看 [volume_weighted_with_title_sorted_large.csv](.\csv\result02\大模型\volume_weighted_with_title_sorted_large.csv)。
+完整书级隶属度排序请查看 [book_weighted_with_title_sorted_large.csv](./csv/result02/大模型/book_weighted_with_title_sorted_large.csv)。
+完整卷级隶属度排序请查看 [volume_weighted_with_title_sorted_large.csv](./csv/result02/大模型/volume_weighted_with_title_sorted_large.csv)。
 
 更多详细数据可以在`csv\result02\大模型\`以及`csv\result02\小模型\`文件夹中找到。
 

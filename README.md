@@ -4,7 +4,10 @@
 <br />
 
 <h3 align="center">BERT-LLM-Yuri-cls</h3>
-
+  <div align="center">
+    <a href="https://github.com/ArtistC220/BERT-LLM-Yuri-cls">
+      <img src="image/README/icon.png" alt="Logo" width="80" height="80">
+    </a>
   <p align="center">
     一个基于BERT微调与LLM进行文本分类与统计的百合作品轻重分类项目
     <!--
@@ -20,8 +23,6 @@
     -->
   </p>
 </div>
-
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>目录</summary>
@@ -42,6 +43,7 @@
         <li><a href="#installation">安装</a></li>
       </ul>
     </li>
+    <li><a href="#abort-train">关于训练</a></li>
     <li><a href="#usage">用法</a></li>
     <li><a href="#roadmap">路线图</a></li>
     <li><a href="#contributing">Contributing</a></li>
@@ -51,7 +53,30 @@
   </ol>
 </details>
 
-## 关于项目
+
+
+
+<p align="center">
+  <img src="image/README/cover2.jpg"
+       style="
+         width:70%;
+         max-width:800px;
+         -webkit-mask:
+           linear-gradient(to top,    transparent 0%, #fff 12%),
+           linear-gradient(to bottom,transparent 0%, #fff 12%),
+           linear-gradient(to left,  transparent 0%, #fff 12%),
+           linear-gradient(to right, transparent 0%, #fff 12%);
+         -webkit-mask-composite: destination-in;
+         mask:
+           linear-gradient(to top,    transparent 0%, #fff 12%),
+           linear-gradient(to bottom,transparent 0%, #fff 12%),
+           linear-gradient(to left,  transparent 0%, #fff 12%),
+           linear-gradient(to right, transparent 0%, #fff 12%);
+         mask-composite: intersect;
+       ">
+</p>
+
+## <a id="about-the-project"></a>关于项目
 
 本项目旨在探索模糊数学理论与传统大模型微调（BERT）和大语言模型（LLM）相结合，在百合文学作品分类中的应用效果。  
 项目的初期目标是通过模型训练构建隶属函数，针对性地给出百合文学作品在“重百合”集合中的隶属度，以此衡量百合作品的“轻重”程度。主要思路是利用BERT微调进行文本初步分类，同时结合大语言模型（LLM）进行辅助统计以参与结果计算，提供相对高效、准确的分类与理解。
@@ -68,14 +93,14 @@
 
 
 
-### 技术栈：
+### <a id ="#built-with"></a>技术栈：
 - **BERT**：微调用于结果分类。
 - **LLM（kimi-k2-0905-preview）**：用于辅助分析统计。
 - **Python**：项目主要开发语言，依赖 PyTorch/scikit-learn 等框架。
 
 <p align="right">(<a href="#readme-top">回到顶部</a>)</p>
 
-## 结果展示
+## <a id="#result"></a>结果展示
 
 以下是项目计算书级隶属度倒序排序前 60 条结果（使用两个预训练模型中的large模型进行推理）：
 
@@ -159,11 +184,11 @@
 
 
 <!-- GETTING STARTED -->
-## 如何开始
+## <a id="getting-started"></a>如何开始
 
 如果你希望在本地进行作品重百合隶属度推理，可以遵循以下步骤：
 
-### 需求
+### <a id="#prerequisites"></a>需求
 
 先确保依赖完整，你可以通过以下命令来安装依赖。
 
@@ -183,7 +208,7 @@
 请确保安装的是适合你的 CUDA 版本的 PyTorch。
 笔者使用的显卡是RTX5060移动版，构建项目时的环境在[u-requirements.txt](./assets/u-requirements.txt)，仅供参考。
 
-### 安装
+### <a id="#installation"></a>安装
 
 1. **克隆仓库。**
    运行以下命令来克隆项目仓库：
@@ -216,7 +241,7 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
-## 用法
+## <a id="usage"></a>用法
 
 1. **准备文本文件**
 
@@ -242,13 +267,28 @@
 
 <p align="right">(<a href="#readme-top">回到顶部</a>)</p>
 
+## <a id="about-train"></a>关于训练
 
-## 路线图
+- 关于训练的脚本目前还没有模块化，仍然在比较原始的状态，但所有的训练脚本以及训练时可能用到的工具都已经放到`script/`中。你可以通过查看[temppath.txt](temppath.txt)来查看部分已经标注的训练脚本路径，[tree.txt](tree.txt)可能会在变动训练脚本中的路径时有很大帮助。绝大多数的训练脚本在更改好所需文件的相对路径后都能直接运行。
 
-- [ ] 
+- 关于训练数据，出于版权考虑不在项目中提供，你可以通过`spider/`中的脚本尝试获取训练数据，也可以联系我提供训练数据。
 
 
-## Contributing
+## <a id="roadmap"></a>路线图
+
+出于时间，设备，经验等多方面限制，本项目在后续更新上可能会十分缓慢，我们非常希望有能者继续对本项目做出贡献！
+
+路线图将列出本项目可能的后续发展方向，甚至本项目以外的发展目标，欢迎感兴趣的朋友们尝试。
+
+- [ ] 完善排行榜数据合并脚本。
+- [ ] 实现训练脚本的模块化搭建。
+- [ ] 细化数据标记，进一步改善预训练模型的推理准确度。
+- [ ] 更多种的预训练模型。
+- [ ] 提高LLM的分析统计部分的准确性。
+- [ ] 引入多模态实现百合漫画、百合动画的轻重分类。
+
+
+## <a id="contributing"></a>Contributing
 
 欢迎对本项目进行贡献！请遵循以下步骤：
 
@@ -264,7 +304,7 @@
 
 <p align="right">(<a href="#readme-top">回到顶部</a>)</p>
 
-## License
+## <a id="license"></a>License
 
 本项目使用 [MIT License](LICENSE) 进行授权。
 
@@ -272,9 +312,30 @@ MIT License 是一个非常宽松的开源协议，允许任何人自由地使�
 
 <p align="right">(<a href="#readme-top">回到顶部</a>)</p>
 
-## 致谢
+## <a id="contact"></a>联系方式
 
-- **贡献者**: 感谢 [yeyeye0118](https://github.com/yeyeye0118) 完成了large版的训练、LLM部分的脚本以及模块化脚本的构建。
+如果你有任何问题、建议或合作意向，可以通过以下方式联系项目维护者：
+
+- **GitHub Issues**  
+  [新建 Issue](https://github.com/ArtistC220/BERT-LLM-Yuri-cls/issues/new) 
+
+- **邮件**  
+  请发送邮件至：  
+  **ArtistC220@outlook.com**  
+  邮件标题建议以 `[BERT-Yuri-CLS]` 开头，方便快速检索。
+
+- **公众号**
+  紧急信息可以通过公众号[MathArtistC](https://mp.weixin.qq.com/s/gGV4TMD1QEpxxvVVHRdjPg)联系。
+
+- **GitHub 主页**  
+  欢迎访问 [@ArtistC220](https://github.com/ArtistC220) 点 ⭐ 支持！
+
+
+<p align="right">(<a href="#readme-top">回到顶部</a>)</p>
+
+## <a id="acknowledgments"></a>致谢
+
+- **合作者**: 感谢 [yeyeye0118](https://github.com/yeyeye0118) 完成了large版的训练、LLM部分的脚本以及模块化脚本的构建。
       感谢[qmskidi](https://github.com/qmskidi)在训练文本标记时提供的帮助，以及在最后成果评估时的支持。
 - **数据集提供者**: 感谢 [轻小说文库](https://www.wenku8.net/) 提供的文本数据集，支持本项目的研究和开发。
 

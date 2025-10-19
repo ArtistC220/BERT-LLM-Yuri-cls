@@ -11,7 +11,7 @@ tqdm>=4.64.0
 scikit-learn>=1.2.0   
 joblib>=1.2.0
 
-# 可选功能
+
 openai>=0.27.0
 beautifulsoup4>=4.11.0   
 chardet>=5.0.0

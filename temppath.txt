@@ -1,0 +1,23 @@
+清洗文本 train\script\clean_txt1.py
+
+模型目录 train\models\ckpt6
+结果目录 train/csv/result02
+挑选训练集以及验证集 train\script\txt_BERT_select.py
+清理文本 train\script\clean_txt1.py
+训练集 train\txt_BERT_train1
+测试集 train\txt_BERT_verify1
+清理文本训练集 train\assets\txt_train_cleaned1
+清理文本验证集 train/assets/text_val_cleaned1
+清理文本验证全集 train\assets\txt_cleaned
+
+训练脚本 train\script\model_BERT_train03.py
+推断脚本 train\script\infer_BERT_02.py
+
+验证设置 train\script\check_arg.py
+验证auc train\script\check_auc.py
+验证标签匹配 train\script\check_label.py
+验证卷级合并 train\script\check_vol_agg.py
+
+这依然可能是一个不完整的训练脚本路径集，没有提到的脚本根据脚本命名以及脚本开头的注释可以查看大致作用。
+script中大部分文件夹中的脚本都是在训练时使用的手动脚本。
+

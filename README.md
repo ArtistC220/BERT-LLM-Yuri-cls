@@ -55,8 +55,8 @@
 
 
 
-
-<p align="center">
+<!--
+  <p align="center">
   <img src="image/README/cover2.jpg"
        style="
          width:70%;
@@ -74,7 +74,16 @@
            linear-gradient(to right, transparent 0%, #fff 12%);
          mask-composite: intersect;
        ">
-</p>
+  </p>
+-->
+<p align="center">
+  <img src="image/README/cover2-g.png"
+       style="
+         width:80%;
+         max-width:800px;
+       ">
+  </p>
+
 
 ## <a id="about-the-project"></a>关于项目
 

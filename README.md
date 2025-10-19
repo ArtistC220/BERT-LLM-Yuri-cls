@@ -90,6 +90,67 @@
 本项目旨在探索模糊数学理论与传统大模型微调（BERT）和大语言模型（LLM）相结合，在百合文学作品分类中的应用效果。  
 项目的初期目标是通过模型训练构建隶属函数，针对性地给出百合文学作品在“重百合”集合中的隶属度，以此衡量百合作品的“轻重”程度。主要思路是利用BERT微调进行文本初步分类，同时结合大语言模型（LLM）进行辅助统计以参与结果计算，提供相对高效、准确的分类与理解。
 
+
+以下是文本`2751-107817`的卷级推理为例的卷级推理简略工作流程展示。
+
+```mermaid
+  %%{init:{
+  'theme':'base',
+  'themeVariables':{
+    'primaryColor':'#ffffff',
+    'primaryTextColor':'#24292f',
+    'primaryBorderColor':'#d0d7de',
+    'lineColor':'#0969DA',
+    'secondaryColor':'#f6f8fa',
+    'tertiaryColor':'#ffffff',
+    'fontFamily':'Segoe UI, Helvetica, Arial, sans-serif',
+    'fontSize':'13px'
+  }
+}}%%
+
+flowchart LR
+    
+    A[2751-107817] 
+    
+    
+    A --> B1[Text Clean
+      BERT inference]
+    A --> B2[Dialogue Split
+      LLM inference]
+    A --> B3[Action/Psy Split
+      LLM inference]
+    
+    B1 --> P[0.999]
+    B2 --> D[0.550]
+    B3 --> A2[0.506]
+    
+    
+    P --> F[Weighted Sum 
+    0.6·P + 0.3·D + 0.1·A]
+    D --> F
+    A2 --> F
+    
+    F --> S[0.815]
+    
+    
+    subgraph PAR[" "]
+      direction TB
+      B1
+      B2
+      B3
+    end
+    
+    
+    classDef inp fill:#f6f8fa,stroke:#0969DA,stroke-width:1px
+    classDef val fill:#ffffff,stroke:#d0d7de,stroke-width:1px
+    classDef form fill:#ffffff,stroke:#0969DA,stroke-dasharray:4 4
+    
+    class A inp
+    class P,D,A2,S val
+    class F form
+```
+
+
 目前，项目已完成以下工作：
 - **数据采集与清洗**  
 - **模型微调训练**  
@@ -294,6 +355,7 @@
 - [ ] 细化数据标记，进一步改善预训练模型的推理准确度。
 - [ ] 更多种的预训练模型。
 - [ ] 提高LLM的分析统计部分的准确性。
+- [ ] 最后加权计算结果时使用动态更新的权重。
 - [ ] 引入多模态实现百合漫画、百合动画的轻重分类。
 
 

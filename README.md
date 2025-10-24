@@ -359,7 +359,7 @@ flowchart LR
 - [ ] 引入多模态实现百合漫画、百合动画的轻重分类。
 
 
-## <a id="contributing"></a>Contributing
+## <a id="contributing"></a>Contributing(建设中)
 
 欢迎对本项目进行贡献！请遵循以下步骤：
 

@@ -406,8 +406,16 @@ MIT License 是一个非常宽松的开源协议，允许任何人自由地使�
 
 ## <a id="acknowledgments"></a>致谢
 
-- **合作者**: 感谢 [yeyeye0118](https://github.com/yeyeye0118) 完成了large版的训练、LLM部分的脚本以及模块化脚本的构建。
+- **合作伙伴**: 感谢 [yeyeye0118](https://github.com/yeyeye0118) 完成了large版的训练、LLM部分的脚本以及模块化脚本的构建。
       感谢[qmskidi](https://github.com/qmskidi)在训练文本标记时提供的帮助，以及在最后成果评估时的支持。
 - **数据集提供者**: 感谢 [轻小说文库](https://www.wenku8.net/) 提供的文本数据集，支持本项目的研究和开发。
 
 <p align="right">(<a href="#readme-top">回到顶部</a>)</p>
+
+<p align="center">
+  <img src="image\README\2751-1.png"
+       style="
+         width:80%;
+         max-width:10000px;
+       ">
+  </p>

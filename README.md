@@ -396,7 +396,7 @@ MIT License 是一个非常宽松的开源协议，允许任何人自由地使�
   邮件标题建议以 `[BERT-Yuri-CLS]` 开头，方便快速检索。
 
 - **公众号**
-  紧急信息可以通过公众号[MathArtistC](https://mp.weixin.qq.com/s/gGV4TMD1QEpxxvVVHRdjPg)联系。
+  紧急信息可以通过公众号[MathArtistC](https://mp.weixin.qq.com/s/_zMHAqi27OjIC26pGRUoNw)联系。
 
 - **GitHub 主页**  
   欢迎访问 [@ArtistC220](https://github.com/ArtistC220) 点 ⭐ 支持！

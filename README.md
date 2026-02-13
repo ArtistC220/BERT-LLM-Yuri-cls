@@ -1,4 +1,4 @@
-`<a id="readme-top"></a>`
+<a id="readme-top"></a>
 
 <!-- PROJECT LOGO -->
 
@@ -84,7 +84,7 @@
        ">
   </p>
 
-## `<a id="about-the-project"></a>`关于项目
+## <a id="about-the-project"></a>关于项目
 
 > **项目维护状态声明**
 > 
@@ -165,7 +165,7 @@ flowchart LR
 
 本项目提供了初步完整的脚本，涵盖了数据处理、推理、统计以及计算结果的整个流程，用户可以方便地进行使用和定制。
 
-### `<a id ="#built-with"></a>`技术栈：
+### <a id ="#built-with"></a>技术栈：
 
 - **BERT**：微调用于结果分类。
 - **LLM（kimi-k2-0905-preview）**：用于辅助分析统计。
@@ -173,7 +173,7 @@ flowchart LR
 
 <p align="right">(<a href="#readme-top">回到顶部</a>)</p>
 
-## `<a id="#result"></a>`结果展示
+## <a id="#result"></a>结果展示
 
 以下是项目计算书级隶属度倒序排序前 60 条结果（使用两个预训练模型中的large模型进行推理）：
 
@@ -255,11 +255,11 @@ flowchart LR
 
 <!-- GETTING STARTED -->
 
-## `<a id="getting-started"></a>`如何开始
+## <a id="getting-started"></a>如何开始
 
 如果你希望在本地进行作品重百合隶属度推理，可以遵循以下步骤：
 
-### `<a id="#prerequisites"></a>`需求
+### <a id="#prerequisites"></a>需求
 
 先确保依赖完整，你可以通过以下命令来安装依赖。
 
@@ -282,7 +282,7 @@ flowchart LR
 请确保安装的是适合你的 CUDA 版本的 PyTorch。
 笔者使用的显卡是RTX5060移动版，构建项目时的环境在[u-requirements.txt](./assets/u-requirements.txt)，仅供参考。
 
-### `<a id="#installation"></a>`安装
+### <a id="#installation"></a>安装
 
 1. **克隆仓库。**
    运行以下命令来克隆项目仓库：
@@ -316,7 +316,7 @@ flowchart LR
 
 <!-- USAGE EXAMPLES -->
 
-## `<a id="usage"></a>`用法
+## <a id="usage"></a>用法
 
 1. **准备文本文件**
 
@@ -341,12 +341,12 @@ flowchart LR
 
 <p align="right">(<a href="#readme-top">回到顶部</a>)</p>
 
-## `<a id="about-train"></a>`关于训练
+## <a id="about-train"></a>关于训练
 
 - 关于训练的脚本目前还没有模块化，仍然在比较原始的状态，但所有的训练脚本以及训练时可能用到的工具都已经放到 `script/`中。你可以通过查看[temppath.txt](temppath.txt)来查看部分已经标注的训练脚本路径，[tree.txt](tree.txt)可能会在变动训练脚本中的路径时有很大帮助。绝大多数的训练脚本在更改好所需文件的相对路径后都能直接运行。
 - 关于训练数据，出于版权考虑不在项目中提供，你可以通过 `spider/`中的脚本尝试获取训练数据，也可以联系我提供训练数据。
 
-## `<a id="roadmap"></a>`路线图
+## <a id="roadmap"></a>路线图
 
 出于时间、设备、经验等多方面限制，本项目在后续更新上可能会十分缓慢，我们非常希望有能者继续对本项目做出贡献！
 
@@ -367,7 +367,7 @@ flowchart LR
 - [ ] 最后加权计算结果时使用动态更新的权重
 - [ ] 引入多模态实现百合漫画、百合动画的轻重分类
 
-## `<a id="contributing"></a>`Contributing
+## <a id="contributing"></a>Contributing
 
 欢迎对本项目进行贡献！由于维护者时间有限，**非常欢迎有兴趣的开发者接手维护或成为核心贡献者**。
 
@@ -384,7 +384,7 @@ flowchart LR
 
 <p align="right">(<a href="#readme-top">回到顶部</a>)</p>
 
-## `<a id="license"></a>`License
+## <a id="license"></a>License
 
 本项目使用 [MIT License](LICENSE) 进行授权。
 
@@ -392,7 +392,7 @@ MIT License 是一个非常宽松的开源协议，允许任何人自由地使�
 
 <p align="right">(<a href="#readme-top">回到顶部</a>)</p>
 
-## `<a id="contact"></a>`联系方式
+## <a id="contact"></a>联系方式
 
 如果你有任何问题、建议或合作意向，可以通过以下方式联系项目维护者：
 
@@ -405,7 +405,7 @@ MIT License 是一个非常宽松的开源协议，允许任何人自由地使�
 
 <p align="right">(<a href="#readme-top">回到顶部</a>)</p>
 
-## `<a id="acknowledgments"></a>`致谢
+## <a id="acknowledgments"></a>致谢
 
 - **合作伙伴**: 感谢 [yeyeye0118](https://github.com/yeyeye0118) 完成了large版的训练、LLM部分的脚本以及模块化脚本的构建。
   感谢[qmskidi](https://github.com/qmskidi)在训练文本标记时提供的帮助，以及在最后成果评估时的支持。

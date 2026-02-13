@@ -52,7 +52,59 @@ if os.path.exists(output_file):
 def process_block(filename, block_id, block_df):
     dialogues = block_df["dialogue"].tolist()
 
-    prompt_text = f"""以下是 {len(dialogues)} 条台词，请统计其中体现“百合氛围”（暧昧、亲密、暗恋、浪漫等）的数量，只输出数字，不要额外文字：\n"""
+    # 构建带详细判定标准的 prompt
+    prompt_text = f"""【判定任务】
+对以下 {len(dialogues)} 条台词进行重百合（Hard Yuri）二元判定，统计符合标准的数量。
+
+【判定标准 - 满足任一即计1】
+
+1. 直球爱意（显）
+   明确"爱/喜欢/恋/想在一起"等词，且隐含或明示排他性（不需要"疯狂"修饰，平静的独占也算）
+
+2. 病态占有/焦虑（隐或显）
+   - 显性：疯狂/嫉妒/想去死/好痛苦/只属于我/不要看别人 等词
+   - 隐性：过度关注细节（"你今天换了发绳""你和谁说话了"）、反复确认关系、害怕被遗忘
+   
+3. 时间维度的永恒绑定（强制排他）
+   含"一辈子/永远/一直/到死/世界末日"等时间词，体现"非阶段性而是永恒"的承诺感
+   *注：平静的"想永远在一起"比激动的"现在好喜欢"更符合重百合*
+
+4. 身份/存在的依附绑定
+   - 自我定义完全依附于对方（"我是你的...""我只会为你..."）
+   - 观测者/记录者视角（"我一直在看着你""我记得你的一切"）
+   - 单方面的守护/独占宣言（"我会保护你"伴随排他性，非单纯友情）
+
+5. 身体/欲望的明确指向
+   渴望触碰/占有/亲吻/闻味道/品尝等身体接触，或明确的性暗示
+
+【强制排除 - 直接计0】
+- 群体性指向（"大家""朋友们""我们"）
+- 明显玩笑语气（被"哈哈""真是的""开玩笑啦"包裹）
+- 粉丝对偶像的单向应援（"推你""应援"）
+- 纯粹商业/工作关系（"请多关照""合作愉快"）
+- 亲情明确无暧昧（"像妈妈/姐姐一样"且无背德感）
+
+【放宽的仲裁规则 - 关键调整】
+当缺乏上下文无法确定是友情还是爱情时，按此优先级：
+
+1. **含极端情绪词**（疯狂/痛苦/窒息/想去死/杀了你/融化）→ 计1
+2. **含时间永恒词+对象特定**（永远/一辈子只对你）→ 计1（即使语气平静）
+3. **含细节观测/记录**（"我知道你的秘密""你今天的表情"）→ 计1（体现过度关注）
+4. **含自我身份绑定**（"我是你的...""我变成你的..."）→ 计1
+5. **仅有"喜欢/重要"但无任何排他/永恒/观测特征** → 计0（保守处理普通友情）
+
+【重要放宽原则】
+- **平静但执着 > 激动但模糊**：一句平静的"我会永远看着你"比重于激动的"今天好开心"
+- **单方面沉重也算**：暗恋、观测者、单方面的身份依附，即使对方未回应，也计入重百合氛围
+- **重复即重量**：如果台词体现重复性/习惯性（"今天又...""每天..."），即使词汇温和，也体现情感重量
+
+【绝对约束 - 违反会导致系统故障】
+- 只输出最终的统计数字（整数），不要任何其他文字、解释、标点或换行
+- 禁止输出"共有X条""结果是：X"等任何形式，只输出数字本身
+- 禁止输出分析过程、行号、理由
+
+【待分析台词】：
+"""
     for i, line in enumerate(dialogues, start=1):
         prompt_text += f"{i}. {line}\n"
 
@@ -64,16 +116,32 @@ def process_block(filename, block_id, block_df):
                 completion = client.chat.completions.create(
                     model="kimi-k2-0905-preview",
                     messages=[
-                        {"role": "system", "content": "你是 Kimi，由 Moonshot AI 提供的人工智能助手，擅长中文和英文对话。"},
-                        {"role": "user", "content": prompt_text}
+                        {
+                            "role": "system", 
+                            "content": "你是重百合文本计数器。你必须只输出一个阿拉伯数字（0-1000之间），禁止输出任何其他字符（包括文字、标点、换行、空格）。错误示例：'5条' 'result:5' '```5```'。正确示例：5"
+                        },
+                        {
+                            "role": "user", 
+                            "content": prompt_text
+                        }
                     ],
                     temperature=0.0,
                 )
-            text = completion.choices[0].message.content
-            match = re.search(r'\d+', text)
-            count = int(match.group()) if match else 0
+            
+            text = completion.choices[0].message.content.strip()
+            
+            # 清理可能的 markdown 或空格，只保留数字
+            text_clean = re.sub(r'[^\d]', '', text)
+            
+            if text_clean:
+                count = int(text_clean)
+            else:
+                count = 0
+                tqdm.write(f"警告：Block {block_id} 无数字输出，原文：{text[:50]}")
+            
             elapsed = time.time() - start_time
             break
+            
         except Exception as e:
             if 'rate_limit' in str(e).lower() or '429' in str(e):
                 wait = 1 + random.random()

@@ -1,22 +1,22 @@
 import os
 import re
 import pandas as pd
-from tqdm import tqdm   # 进度条
+from tqdm import tqdm   
 from utils import load_config
-import chardet   # 自动检测编码
+import chardet   
 
 # 读取配置
 config = load_config()
 
-# -------------------- 配置 --------------------
+# 配置 
 input_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), config["txt_test_dir"])      
 output_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), config["csv_cut_dialogue_dir"])      
 
 os.makedirs(output_folder, exist_ok=True)
 
-block_size = 200   # 每块台词数量，可调整
+block_size = 200   # 每块台词数量
 
-# 正则匹配中英文引号里的内容
+# 匹配中英文引号里的内容
 quote_pattern = re.compile(r'[“「『"](.+?)[”」』"]')
 
 summary_list = []
@@ -28,7 +28,7 @@ file_list = [f for f in os.listdir(input_folder) if f.endswith(".txt")]
 for filename in tqdm(file_list, desc="Processing texts"):
     file_path = os.path.join(input_folder, filename)
 
-    # -------------------- 自动检测文件编码 --------------------
+    # 自动检测文件编码
     with open(file_path, "rb") as f:
         raw_data = f.read()
         result = chardet.detect(raw_data)

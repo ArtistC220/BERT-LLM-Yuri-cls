@@ -1,5 +1,6 @@
 import os
 import glob
+import re
 import pandas as pd
 from datetime import datetime
 from utils import load_config
@@ -9,12 +10,24 @@ config = load_config()
 
 def get_latest_file(folder, ext="csv"):
     """
-    获取指定目录下最新创建的文件
+    获取指定目录下文件名中时间戳最新的文件
+    文件名格式: rank_YYYYMMDD_HHMMSS.csv
     """
     files = glob.glob(os.path.join(folder, f"*.{ext}"))
     if not files:
         raise FileNotFoundError(f"在 {folder} 下找不到 {ext} 文件")
-    latest_file = max(files, key=os.path.getctime)  # 按创建时间取最新
+    
+    # 从文件名中提取时间戳，格式为 rank_YYYYMMDD_HHMMSS.csv
+    def extract_timestamp(filepath):
+        filename = os.path.basename(filepath)
+        # 匹配 rank_YYYYMMDD_HHMMSS 格式
+        match = re.search(r'rank_(\d{8}_\d{6})', filename)
+        if match:
+            return match.group(1)
+        return "00000000_000000"  # 如果无法匹配，返回最早的时间
+    
+    # 按文件名中的时间戳排序，取最新的
+    latest_file = max(files, key=extract_timestamp)
     return latest_file
 
 
@@ -23,23 +36,31 @@ def merge_csv_files(history_dir, new_csv_dir, new_csv_name):
     合并主排行榜（history 最新文件）和新排行榜（指定文件名）
     输出到 history 目录，文件名加时间戳
     """
-    # 获取主排行榜（history 最新）
-    fixed_csv = get_latest_file(history_dir)
-
     # 获取新排行榜（用户指定）
     latest_csv = os.path.join(new_csv_dir, new_csv_name)
     if not os.path.exists(latest_csv):
         raise FileNotFoundError(f"新排行榜文件不存在: {latest_csv}")
+    
+    # 获取主排行榜（history 最新），如果没有则只用新排行榜
+    try:
+        fixed_csv = get_latest_file(history_dir)
+        print(f"主排行榜: {fixed_csv}")
+        has_history = True
+    except FileNotFoundError:
+        print(f"历史记录目录为空，将创建新的历史记录")
+        has_history = False
+        fixed_csv = None
 
-    print(f"主排行榜: {fixed_csv}")
     print(f"新排行榜: {latest_csv}")
 
     # 读取 CSV
-    df1 = pd.read_csv(fixed_csv)
-    df2 = pd.read_csv(latest_csv)
-
-    # 合并
-    merged_df = pd.concat([df1, df2], ignore_index=True)
+    if has_history:
+        df1 = pd.read_csv(fixed_csv)
+        df2 = pd.read_csv(latest_csv)
+        # 合并
+        merged_df = pd.concat([df1, df2], ignore_index=True)
+    else:
+        merged_df = pd.read_csv(latest_csv)
 
     # 去重（以 text_id 为唯一标识，保留新文件的记录）
     merged_df = merged_df.drop_duplicates(subset=["aid"], keep="last")

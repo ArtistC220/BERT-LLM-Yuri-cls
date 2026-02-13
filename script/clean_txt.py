@@ -29,11 +29,13 @@ def clean_text(text: str) -> str:
     return pat.sub('', text).lstrip()
 
 def read_text(path):
-    for enc in ('utf-8', 'gbk'):
+    for enc in ('utf-8', 'gbk', 'utf-16', 'utf-16-le', 'utf-16-be'):
         try:
             with open(path, 'r', encoding=enc) as f:
                 return f.read()
         except UnicodeDecodeError:
+            continue
+        except Exception as e:
             continue
     raise RuntimeError(f'无法解码文件：{path}')
 
